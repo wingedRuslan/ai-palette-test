@@ -1,0 +1,109 @@
+Thai features / challenges:
+
+- [bag-of-words] approach as many words can be used to identify positive or negative feedbacks. This makes these methods work well with European language reviews which are segmented texts. However, these [bag-of-word] based methods face problem with Thai customer’s review which is non-segmented text, since Thai texts are formed as a long sequence of characters without word boundaries. [1]
+
+( European languages where words are clearly defined by word delimiter such as white space or other special symbols. This is because European texts are explicitly segmented into word tokens, then word tokens are used as a bag of-words to be parameters for the sentiment analysis process. However, when apply the sentiment analysis to Thai customer’s reviews, Thai texts need to be parsed and tokenized into individual words first before analysis.) [1]
+
+- challenging bc the syntax of Thai language is highly ambiguous and Thai language is non-segmented (i.e. a text document is written continuously as a sequence of characters without explicit word boundary delimiters). [1]
+
+
+[1] - 1) Thai word extraction technique (Thai word segmentation to
+extract Thai words) + text processing - Thai stopword removal and emotional word detection 2) sentiment analysis technique (to check customer’s opinion) [1]
+
+==========================================================
+[2] 
+
+lexicon-based approach and a machine-learning-based approach. The former relies on terms with corresponding polarity orientations in a predefined vocabulary, called a sentiment lexicon [6, 7]. The latter uses many features extracted from amount of labelled documents to train a machine-learning model, and uses the model as a sentiment classifier [2, 8, 9].
+
+Polyglot, the natural language processing library that we used for the tokenization and language detection processes. For the specific-domain trained lexicon, the whole dataset was used as the training set. 
+
+
+This study makes a comparison between the classifier using the generic sentiment lexicon and that using the specific sentiment lexicon for sentiment classification on Thai social media documents. A basic lexicon-based sentiment classification method, summing polarity scores from terms appearing in a document, is used
+
+
+=============================================================
+[3] Thai Sentiment Analysis via Bidirectional LSTM-CNN Model with Embedding Vectors and Sentic Features
+
+This work attempted to incorporate two more features–part-of-speech and sentic features–to make the analysis more accurate. (additionally to word2vec embeddings)
+
+The part-of-speech feature identifies the type of words that better convey various sentiments, while the sentic feature identifies the emotion underlying certain words.
+
+Combining Bidirectional Long Short-term Memory and Convolutional Neural Networks models with several combinations of the features mentioned, we performed a sentiment analysis of Thai children stories and found that the combination of all three features gave the best result at 78.89 % F1-score.
+
+
+--- Pre-processing
+
+- Tokenisation - words in every sentence have been segmented by “KUCUT” software that utilises an unsupervised algorithm to perform the task
+
+- POS-Tagging - already available - to identify the type of words in every sentence
+
+
+--- Features
+
+1) Word Embedding Feature: To transform each word in the sentence into the vector, Thai2Vec–one of word embedding techniques–is used. Thai2Vec is a pre-trained word embedding that is trained with Thai-Wikipedia data by ULMFit method [22]. Thai2Vec contains 60,000 words in the corpus. Each word is represented by a 300-dimensional vector.
+
+
+2) POS Embedding Feature
+
+3) Sentic Feature
+
+
+--- Deep Learning Models
+
+- Concatenated Bidirectional Long Short-term Memory (Bi-LSTM) with Convolutional Neural Network (CNN) model, here refers as Bi-LSTM-CNN, is used to classify sentiment into three class, i.e. Negative, Neutral, and Positive. The idea is to learn contexts with Bi-LSTM, then capture local features with CNNs.
+
+=======================================
+[4]
+
+CNNBidirectional GRU received the highest F1 score of 0.841065 and
+accuracy of 0.84233. 
+
+pre-trained Thai2Vec resources with the deep neural network model. 
+
+=======================================
+[5] Could be really good!!!
+
+The results show that a model using the bi-directional gated recurrent unit (GRU) with attention mechanism yields the best performance in sentiment classification
+
+However, training a deep learning model until a model yields the result in satisfied accuracy legitimately relies on both quality and quantity of data; therefore, paying attention to data collecting and processing is needed to assure that there is sufficient amount of data to make a model work well.
+
+cleaning method is significant for creating the training data more reliable.
+
+Data_Preparation ---> Tokenization ---> Word Embedding ---> 
+
+
+========================================
+[6]
+
+- text pre-processing is used to mitigate noise from input texts. 
+[Unnecessary parts of the input message, such as URLs and usernames, are removed. Duplicated spaces are replaced with one space. Moreover, a space is inserted between Thai and English characters to help word tokenizers identify word boundaries between them.]
+- robustness towards word segmentation is enhanced by using an ensemble process with two tokenizers.
+[ensemble model, which combines the output from different tokenizers.]
+- Finally, a label-noise filtering algorithm inspired by Cotraining [3] is adopted to explore label errors and imbalanced data set.
+- word segmentation models, such as Deepcut [7] and Sertis [8], are based on deep learning modules - NOT suitable
+
+KBTGTK [10] deep learning tokenizer was specially designed and trained with the UGWC dataset from social media. Due to the similarity between UGWC and our dataset, KBTGTK is chosen to be used in the experiment in this paper.
+
+WHICH WORD SEGMENTATION TO CHOOSE?? DEPENDS ON WHERE THE DATA come from - social or folmal data sources?
+
+
+Input text --> Text pre-processing --> Ensemble with different Word Segmentation Algorithms --> 
+
+Moreover, for both CNN and HAN models, the input is a sequence of 200 embedded words. Each word is embedded into a vector with 256 dimensions without pre-trained word embedding before being dispatched into the models. Each model maps input text to sentiment class probabilities.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
