@@ -58,5 +58,23 @@ Translation from Thai to English could be achieved by using a transformer model 
 
 Due to computational power limitations, I could not train transformer-based language models from scratch. Therefore, I chose to train a Bidirectional LSTM model for this task. For sequences other than time series (e.g. text), it is often the case that a RNN model can perform better if it not only processes sequence from start to end but also backward. For example, to classify the text, it is often useful to have the context around each individual word, not only just the words that come before it.    
 
-
 LSTM (alternatively GRU) - better captures long-range dependencies in the input text, helps with vanishing gradient problem. LSTM is more powerful than GRU. Since GRU is a simpler model, it is easier (faster) to build bigger networks with its units.     
+
+
+### Literature Review (Exploration) Phase
+
+Before implementing designed approaches, I conducted an extensive literature review to better understand the peculiarities 1 of the Thai language as well as get myself familiar with the current progress in performing Sentiment Analysis on the Thai language corpus.   
+
+There is a great python package PyThaiNLP - Language Processing in Python similar to NLTK with a focus on Thai language (Link to Github project). This library will be used in text processing and linguistic analysis of Thai reviews as well as for tokenization.   
+
+My selected papers:
+- “Thai Sentiment Analysis via Bidirectional LSTM-CNN Model with Embedding Vectors and Sentic Features“ by Seneewong et al., 2018
+- “Sentiment Analysis of Thai Financial News” by Esichaikul et al., 2018
+- “Thai Comments Sentiment Analysis on Social Networks with Deep Learning Approach” by Piyaphakdeesakun et al., 2019
+- “Using Label Noise Filtering and Ensemble Method for Sentiment Analysis on Thai Social Data” by Eamwiwa et al., 2019
+- “A Comparative Study of Pretrained Language Models on Thai Social Text Categorization“ by Horsuwan et al., 2019 - highly relevant paper, as researchers demonstrate state-of-the-art results on two Thai social text categorization tasks realized by pretraining a language model. One of the benchmarking datasets used - Wongnai Challenge: Rating Review Prediction. The Wongnai Challenge is to create a multi-class classification sentiment prediction model from textual reviews. As it turns out, our dataset is the exact Wongnai dataset used in the above-mentioned challenge (Link, Kaggle competition).    
+
+There is also a performance comparison of different methods/models on this benchmarking dataset. (Please see https://github.com/PyThaiNLP/classification-benchmarks). In addition, there is an implementation of different methods in this notebook.       
+
+
+Since copying the solution (and methods used) does not make sense, I implemented two other methods not present in the solutions. Namely, I reproduced the results of BERT model by using a pre-trained BERT-thai model and the available script to perform classification on the Wongnai dataset. I also trained a BiLSTM model from scratch for the classification task and compared the results of two approaches.    
