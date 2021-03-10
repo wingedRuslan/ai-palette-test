@@ -1,0 +1,3 @@
+# ignore dataset files (to large for github to store)
+*.csv
+*.tsv
